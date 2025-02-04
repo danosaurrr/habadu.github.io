@@ -327,10 +327,20 @@
                 .catch(error => console.error("Microphone access denied", error));
         });
     </script>
-	<audio hidden autoplay>
-        <source src="https://github.com/danosaurrr/habadu.github.io/raw/refs/heads/main/audio/audio.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+	<audio id="birthday-audio" autoplay>
+    <source src="https://github.com/danosaurrr/habadu.github.io/raw/refs/heads/main/audio/audio.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    const audio = document.getElementById('birthday-audio');
+	
+    setTimeout(() => {
+        audio.pause(); // Pause the audio
+        audio.currentTime = 0; // Reset the audio to the beginning
+    }, 15000); // 15 seconds (15000 milliseconds)
+</script>
+
 
 </script>
 </body>
