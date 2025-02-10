@@ -316,22 +316,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("audio");
     const cake = document.querySelector(".cake");
+    let audioTimeout; // Store timeout to control playback
 
     function playAudio() {
-        audio.currentTime = 0; // 
+        clearTimeout(audioTimeout); // Clear previous timeout if any
+        audio.currentTime = 0; // Reset audio to start
         audio.play();
-        
-        setTimeout(() => {
+
+        // Stop audio after 15 seconds
+        audioTimeout = setTimeout(() => {
             audio.pause();
-            audio.currentTime = 0; //
-        }, 15000); //
+            audio.currentTime = 0; // Reset after stopping
+        }, 15000);
     }
 
+    // Auto-play on page load for 15 seconds
     playAudio();
 
-    cake.addEventListener("click", () => {
-        playAudio();
-    });
+    // Play again when the cake is clicked
+    cake.addEventListener("click", playAudio);
 });
 </script>
 </body>
